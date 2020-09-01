@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Work+Sans:wght@400;500;700;800;900&display=swap");
+
+body {
+  font-family: "Nanum Gothic", sans-serif;
+  background-color: #adcae6;
+  background-image: linear-gradient(#fff 1px, transparent 2px),
+    linear-gradient(90deg, #fff 1px, transparent 2px);
+  background-size: 150px 150px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-family: "Work Sans", sans-serif;
+  font-size: 3.5rem;
+  font-weight: 900;
+  -webkit-text-stroke: 2px #3573af;
+  color: #72a4d4;
+  text-align: center;
+}

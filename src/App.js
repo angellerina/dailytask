@@ -4,6 +4,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import TodoInput from "./components/TodoInput";
 import TodoList from "./components/TodoList";
+import "./App.css";
+
+const year = new Date().getFullYear();
+
 class App extends Component {
   state = {
     items: [],
@@ -55,12 +59,13 @@ class App extends Component {
       editItem: true,
     });
   };
+
   render() {
     return (
       <div className='container'>
         <div className='row'>
           <div className='col-10 mx-auto col-md-8 mt-5'>
-            <h3 className='text-capitalize text-center'>todo input</h3>
+            <h1 className='text-uppercase text-center'>Daily task</h1>
             <TodoInput
               item={this.state.item}
               handleChange={this.handleChange}
@@ -73,6 +78,9 @@ class App extends Component {
               handleDelete={this.handleDelete}
               handleEdit={this.handleEdit}
             />
+            <footer className='text-uppercase text-center'>
+              <small>&copy; Angelle {year}</small>
+            </footer>
           </div>
         </div>
       </div>
