@@ -1,38 +1,47 @@
 import React, { Component } from "react";
-import "./App.css";
-import "@fortawesome/fontawesome-free/css/all.min.css";
+import { v4 as uuidv4 } from "uuid";
 import "bootstrap/dist/css/bootstrap.min.css";
 import TodoInput from "./components/TodoInput";
 import TodoList from "./components/TodoList";
-import { v4 as uuidv4 } from "uuid";
-
 class App extends Component {
   state = {
-    items: [
-      { id: 1, title: "wake up" },
-      { id: 2, title: "make breakfast!" },
-    ],
+    items: [],
     id: uuidv4(),
     item: "",
     editItem: false,
   };
-
   handleChange = (e) => {
-    console.log("handleChange");
+    this.setState({
+      item: e.target.value,
+    });
   };
   handleSubmit = (e) => {
-    console.log("handleSubmit");
+    e.preventDefault();
+    const newItem = {
+      id: this.state.id,
+      title: this.state.item,
+    };
+    const updatedItems = [...this.state.items, newItem];
+
+    this.setState(
+      {
+        items: updatedItems,
+        item: "",
+        id: uuidv4(),
+        editItem: false,
+      },
+      () => console.log(this.state)
+    );
   };
   clearList = () => {
-    console.log("clearList");
+    console.log("clear list ");
   };
   handleDelete = (id) => {
-    console.log(`handle delete ${id}`);
-  };
-  handleEdit = (id) => {
     console.log(`handle edit ${id}`);
   };
-
+  handleEdit = (id) => {
+    console.log(`edit edit ${id}`);
+  };
   render() {
     return (
       <div className='container'>
@@ -46,7 +55,7 @@ class App extends Component {
               editItem={this.state.editItem}
             />
             <TodoList
-              items={this.state.item}
+              items={this.state.items}
               clearList={this.clearList}
               handleDelete={this.handleDelete}
               handleEdit={this.handleEdit}
